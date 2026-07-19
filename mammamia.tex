@@ -373,7 +373,7 @@ the training-set pass@1 of the other rows. Their reported AIME24/AIME25/Olympiad
 SAS
  & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
 \midrule
-\multirow{16}{*}{\shortstack{MAS\\(Heuristic)}}
+\multirow{12}{*}{\shortstack{MAS\\(Heuristic)}}
  & TDAG (Llama-3.2-3B)~\citep{wang2025tdag} & 12.0\,\deltadn{41.0} & 6.7\,\deltadn{3.3} & 0.0\,\deltatie{0.0} & 2.3\,\deltadn{10.3} & 1.3\,\deltadn{6.0} & 0.0\,\deltadn{1.8} & 22.0\,\deltadn{28.0} & 7.3\,\deltadn{11.3} & 36.4\,\deltaup{9.1} & 0.0\,\deltadn{4.5} \\
  & TDAG (Llama-3.1-8B)~\citep{wang2025tdag} & 20.0\,\deltadn{35.0} & 6.7\,\deltadn{3.3} & 0.0\,\deltatie{0.0} & 14.9\,\deltadn{1.1} & 10.7\,\deltaup{2.0} & 3.6\,\deltaup{0.6} & 33.3\,\deltadn{30.7} & 16.0\,\deltadn{11.3} & 33.3\,\deltaup{9.1} & 2.3\,\deltatie{0.0} \\
  & TDAG (Qwen3.5-4B)~\citep{wang2025tdag} & 89.0\,\deltadn{3.0} & 50.0\,\deltadn{6.7} & 40.0\,\deltaup{6.7} & 17.1\,\deltadn{15.4} & 19.3\,\deltadn{18.0} & 10.3\,\deltadn{9.7} & 73.3\,\deltaup{4.0} & 57.3\,\deltaup{21.3} & 69.7\,\deltadn{4.5} & 9.1\,\deltaup{2.3} \\
@@ -386,12 +386,12 @@ SAS
  & Magentic-One (Llama-3.1-8B)~\citep{fourney2024magentic} & 50.0\,\deltadn{5.0} & 3.3\,\deltadn{6.7} & 0.0\,\deltatie{0.0} & 16.0\,\deltatie{0.0} & 8.7\,\deltatie{0.0} & 3.6\,\deltaup{0.6} & 60.0\,\deltadn{4.0} & 38.7\,\deltaup{11.3} & 30.3\,\deltaup{6.1} & 9.1\,\deltaup{6.8} \\
  & Magentic-One (Qwen3.5-4B)~\citep{fourney2024magentic} & 85.0\,\deltadn{7.0} & 33.3\,\deltadn{23.3} & 33.3\,\deltatie{0.0} & 36.0\,\deltaup{3.4} & 38.7\,\deltaup{1.3} & 13.9\,\deltadn{6.1} & 74.7\,\deltaup{5.3} & 53.3\,\deltaup{17.3} & 56.1\,\deltadn{18.2} & 13.6\,\deltaup{6.8} \\
  & Magentic-One (Qwen3.5-9B)~\citep{fourney2024magentic} & 86.0\,\deltadn{12.0} & 26.7\,\deltadn{36.7} & 16.7\,\deltadn{36.7} & 33.7\,\deltadn{5.7} & 30.7\,\deltadn{18.0} & 15.2\,\deltadn{10.9} & 76.7\,\deltaup{6.7} & 56.0\,\deltaup{10.0} & 77.3\,\deltaup{10.6} & 20.4\,\deltaup{9.1} \\
+\midrule
+\multirow{12}{*}{\shortstack{MAS\\(Routing RL)}}
  & AgentNet (Llama-3.2-3B)~\citep{yang2025agentnet} & 43.0\,\deltadn{10.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 10.9\,\deltadn{1.7} & 6.7\,\deltadn{0.7} & 2.4\,\deltaup{0.6} & 47.3\,\deltadn{2.7} & 22.0\,\deltaup{3.3} & 24.2\,\deltadn{3.0} & 2.3\,\deltadn{2.3} \\
  & AgentNet (Llama-3.1-8B)~\citep{yang2025agentnet} & 43.0\,\deltadn{12.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 6.3\,\deltadn{9.7} & 6.7\,\deltadn{2.0} & 1.2\,\deltadn{1.8} & 48.7\,\deltadn{15.3} & 25.3\,\deltadn{2.0} & 18.2\,\deltadn{6.1} & 0.0\,\deltadn{2.3} \\
  & AgentNet (Qwen3.5-4B)~\citep{yang2025agentnet} & 94.0\,\deltaup{2.0} & 60.0\,\deltaup{3.3} & 36.7\,\deltaup{3.3} & 34.9\,\deltaup{2.3} & 36.0\,\deltadn{1.3} & 18.8\,\deltadn{1.2} & 77.3\,\deltaup{8.0} & 56.7\,\deltaup{20.7} & 77.3\,\deltaup{3.0} & 11.4\,\deltaup{4.5} \\
  & AgentNet (Qwen3.5-9B)~\citep{yang2025agentnet} & 97.0\,\deltadn{1.0} & 56.7\,\deltadn{6.7} & 36.7\,\deltadn{16.7} & 42.9\,\deltaup{3.4} & 46.0\,\deltadn{2.7} & 25.4\,\deltadn{0.6} & 75.3\,\deltaup{5.3} & 56.7\,\deltaup{10.7} & 75.8\,\deltaup{9.1} & 20.4\,\deltaup{9.1} \\
-\midrule
-\multirow{8}{*}{\shortstack{MAS\\(Routing RL)}}
  & Puppeteer (Llama-3.2-3B, per-domain)~\citep{dang2026multi} & 56.0\,\deltaup{3.0} & 3.3\,\deltadn{6.7} & 3.3\,\deltaup{3.3} & 12.0\,\deltadn{0.6} & 7.3\,\deltatie{0.0} & 2.4\,\deltaup{0.6} & 56.7\,\deltaup{6.7} & 22.0\,\deltaup{3.3} & 25.8\,\deltadn{1.5} & 4.5\,\deltatie{0.0} \\
  & Puppeteer (Llama-3.1-8B, per-domain)~\citep{dang2026multi} & 55.0\,\deltatie{0.0} & 3.3\,\deltadn{6.7} & 6.7\,\deltaup{6.7} & 17.1\,\deltaup{1.1} & 10.0\,\deltaup{1.3} & 4.2\,\deltaup{1.2} & 52.0\,\deltadn{12.0} & 28.7\,\deltaup{1.4} & 36.4\,\deltaup{12.2} & 2.3\,\deltatie{0.0} \\
  & Puppeteer (Qwen3.5-4B, per-domain)~\citep{dang2026multi} & 91.0\,\deltadn{1.0} & 50.0\,\deltadn{6.7} & 43.3\,\deltaup{10.0} & 34.3\,\deltaup{1.7} & 34.7\,\deltadn{2.6} & 17.0\,\deltadn{3.0} & 69.3\,\deltatie{0.0} & 44.7\,\deltaup{8.7} & 60.6\,\deltadn{13.6} & 6.8\,\deltatie{0.0} \\
