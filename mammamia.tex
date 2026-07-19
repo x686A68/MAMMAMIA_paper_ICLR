@@ -67,7 +67,7 @@ allows every agent to apply focused expertise within a narrowly scoped context,
 reducing per-subtask error accumulation and improving overall
 reliability~\citep{wang2025mas2,lin2024think}.
 MAS have demonstrated performance advantages over single-agent
-systems (SAS) across diverse and challenging domains.\todo{Specify application domains and add citations after benchmark selection.}
+systems (SAS) across diverse and challenging domains.\todo[inline]{Specify application domains and add citations after benchmark selection.}
 The development of MAS has fundamentally progressed along two axes:
 the system-level orchestration of agents and the method-level optimization strategy.
 
@@ -113,7 +113,7 @@ our framework is recursive and the topology is inherently dynamic.
 Training ARMOR end-to-end via reinforcement learning yields three emergent
 properties: a task-conditioned dynamic \emph{topology} that distributes context load
 evenly across agents, preventing any single agent from becoming a context
-bottleneck\todo{Analysis: measure per-agent peak context load; show
+bottleneck\todo[inline]{Analysis: measure per-agent peak context load; show
 RL-learned topology achieves more balanced load distribution than heuristic
 baselines.}; agent \emph{roles} that span the full natural language role space,
 unconstrained by any fixed pool; and fine-grained \emph{content} management that shields each agent from
@@ -240,7 +240,7 @@ $\mathbf{o}_i^t = [(i,r_1,c_1),\ldots,(i,r_k,c_k)]$ is a list of outgoing messag
 and $\rho_i^{t+1}$ is the agent's self-updated profile.
 % The reasoning trace $z_i^t$ is also appended to $\mathcal{M}_i^{t+1}$,
 % making it part of the agent's persistent memory.
-\todo{Decide: should $z_i^t$ be stored in $\mathcal{M}_i$? Putting reasoning in memory enables self-reflection but increases context load.}
+\todo[inline]{Decide: should $z_i^t$ be stored in $\mathcal{M}_i$? Putting reasoning in memory enables self-reflection but increases context load.}
 
 \paragraph{Execution}
 The system maintains a FIFO message queue $\mathcal{Q}$.
