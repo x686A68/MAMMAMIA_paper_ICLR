@@ -401,19 +401,76 @@ SAS
  & Puppeteer (Qwen3.5-4B, shared)~\citep{dang2026multi} & 96.0\,\deltaup{4.0} & 60.0\,\deltaup{3.3} & 33.3\,\deltatie{0.0} & 36.6\,\deltaup{4.0} & 36.0\,\deltadn{1.3} & 17.0\,\deltadn{3.0} & 71.3\,\deltaup{2.0} & 40.7\,\deltaup{4.7} & 63.6\,\deltadn{10.6} & 6.8\,\deltatie{0.0} \\
  & Puppeteer (Qwen3.5-9B, shared)~\citep{dang2026multi} & 98.0\,\deltatie{0.0} & 73.3\,\deltaup{10.0} & 56.7\,\deltaup{3.4} & 41.1\,\deltaup{1.7} & 42.0\,\deltadn{6.7} & 20.6\,\deltadn{5.5} & 70.7\,\deltaup{0.7} & 52.0\,\deltaup{6.0} & 60.6\,\deltadn{6.1} & 13.6\,\deltaup{2.2} \\
 \midrule
-\multirow{5}{*}{\shortstack{MAS\\(End-to-End RL)}}
- & Distill-SFT full (Llama-3.1-8B) & 48.0\,\deltadn{7.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 6.9\,\deltadn{9.1} & 4.0\,\deltadn{4.7} & 2.4\,\deltadn{0.6} & 59.3\,\deltadn{4.7} & 36.7\,\deltaup{9.4} & 16.7\,\deltadn{7.5} & 4.5\,\deltaup{2.2} \\
- & Distill-SFT LoRA-r128 (Llama-3.1-8B) & 47.0\,\deltadn{8.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 2.9\,\deltadn{13.1} & 2.7\,\deltadn{6.0} & 0.0\,\deltadn{3.0} & 49.3\,\deltadn{14.7} & 35.3\,\deltaup{8.0} & 13.6\,\deltadn{10.6} & 2.3\,\deltatie{0.0} \\
+\multirow{3}{*}{\shortstack{MAS\\(End-to-End RL)}}
  & SFT+GRPO & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
  & MetaAgent-X~\citep{zhang2026metaagentx} & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
  & \textbf{ARMOR (Ours)} & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\caption{Main results (\%). \emph{Math}, \emph{Science}, and \emph{GAIA} report accuracy; \emph{Code} reports pass@1; \emph{Multi-hop QA} reports exact match. All numbers use single-sample greedy decoding (no agentic scaffold). LCB: LiveCodeBench-v6; CC: CodeContests. Multi-hop QA uses the open-book distractor setting (no retrieval / no tools). GAIA uses a closed-book, text-only subset (no tools / web access). \emph{LLM-only (M)}: model $M$ evaluated zero-shot. \emph{Distill-SFT}: student SFT-distilled
-from MetaAgent-X teacher trajectories (correct-only, MAS protocol; full-parameter vs.\ LoRA
-$r{=}128$), evaluated in the same designer--executor closed loop; GRPO stage pending.}
+\caption{Main results (\%). \emph{Math}, \emph{Science}, and \emph{GAIA} report accuracy; \emph{Code} reports pass@1; \emph{Multi-hop QA} reports exact match. All numbers use single-sample greedy decoding (no agentic scaffold). LCB: LiveCodeBench-v6; CC: CodeContests. Multi-hop QA uses the open-book distractor setting (no retrieval / no tools). GAIA uses a closed-book, text-only subset (no tools / web access). \emph{LLM-only (M)}: model $M$ evaluated zero-shot.}
 \label{tab:main_results}
+\end{table}
+
+\begin{table}[t]
+\centering
+\small
+\textbf{(a) Full-suite evaluation (all 10 benchmarks, \%)}\\[2pt]
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{l|ccc|ccc|cc|c|c|c}
+\toprule
+\textbf{Model / ckpt} & MATH500 & AIME24 & AIME25 & LCB & APPS & CC & HotpotQA & MuSiQue & GPQA & GAIA & \textbf{Avg.} \\
+\midrule
+MetaAgent-X teacher (Qwen3-8B)~\citep{zhang2026metaagentx} & 82.0 & 53.3 & 36.7 & -- & -- & -- & 56.7 & 39.3 & 40.9 & 6.8 & -- \\
+\midrule
+LLM-only (Llama-3.1-8B, student base) & 55.0 & 10.0 & 0.0 & 16.0 & 8.7 & 3.0 & 64.0 & 27.3 & 24.2 & 2.3 & 21.1 \\
+Distill-SFT full & 48.0\,\deltadn{7.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 6.9\,\deltadn{9.1} & 4.0\,\deltadn{4.7} & 2.4\,\deltadn{0.6} & 59.3\,\deltadn{4.7} & 36.7\,\deltaup{9.4} & 16.7\,\deltadn{7.5} & 4.5\,\deltaup{2.2} & 17.9 \\
+Distill-SFT LoRA $r{=}64$ (step 2000) & 41.0\,\deltadn{14.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 5.7\,\deltadn{10.3} & 3.3\,\deltadn{5.4} & 0.6\,\deltadn{2.4} & 48.7\,\deltadn{15.3} & 30.0\,\deltaup{2.7} & 18.2\,\deltadn{6.0} & 2.3\,\deltatie{0.0} & 15.0 \\
+Distill-SFT LoRA $r{=}64$ (final) & 34.0\,\deltadn{21.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 3.4\,\deltadn{12.6} & 2.7\,\deltadn{6.0} & 0.6\,\deltadn{2.4} & 53.3\,\deltadn{10.7} & 32.7\,\deltaup{5.4} & 16.7\,\deltadn{7.5} & 2.3\,\deltatie{0.0} & 14.6 \\
+Distill-SFT LoRA $r{=}128$ (final) & 47.0\,\deltadn{8.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 2.9\,\deltadn{13.1} & 2.7\,\deltadn{6.0} & 0.0\,\deltadn{3.0} & 49.3\,\deltadn{14.7} & 35.3\,\deltaup{8.0} & 13.6\,\deltadn{10.6} & 2.3\,\deltatie{0.0} & 15.3 \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}\\[6pt]
+\textbf{(b) LoRA hyperparameter sweep (fixed 200-problem dev subset, 40/bench, \%)}\\[2pt]
+\begin{adjustbox}{max width=\columnwidth}
+\begin{tabular}{llc|ccccc|c}
+\toprule
+\textbf{Config} & (rank, $\alpha$, lr, epochs) & \textbf{step} & MuSiQue & HotpotQA & GPQA & MATH500 & APPS & \textbf{Avg.} \\
+\midrule
+C1 & (32, 64, 1e-4, 2) & 1200 & 30.0 & 47.5 & 7.5 & 35.0 & 0.0 & 24.0 \\
+   &                    & 2460 & 22.5 & 42.5 & 12.5 & 45.0 & 7.5 & 26.0 \\
+\midrule
+C2 & (64, 128, 1e-4, 2) & 1200 & 22.5 & 42.5 & 17.5 & 37.5 & 2.5 & 24.5 \\
+   &                    & 1800 & 27.5 & 50.0 & 12.5 & 32.5 & 7.5 & 26.0 \\
+   &                    & 2000 & 42.5 & 47.5 & 17.5 & 40.0 & 0.0 & 29.5 \\
+   &                    & 2460 & 30.0 & 52.5 & 20.0 & 30.0 & 10.0 & 28.5 \\
+\midrule
+C3 & (32, 64, 5e-5, 3)  & 1200 & 22.5 & 45.0 & 17.5 & 37.5 & 0.0 & 24.5 \\
+   &                    & 2400 & 25.0 & 45.0 & 2.5 & 35.0 & 2.5 & 22.0 \\
+   &                    & 3690 & 35.0 & 52.5 & 15.0 & 27.5 & 2.5 & 26.5 \\
+\midrule
+C4 & (16, 32, 2e-4, 2)  & 1200 & 30.0 & 40.0 & 10.0 & 35.0 & 0.0 & 23.0 \\
+   &                    & 2460 & 30.0 & 50.0 & 12.5 & 47.5 & 2.5 & 28.5 \\
+\midrule
+C5 & (128, 256, 1e-4, 2) & 1200 & 27.5 & 40.0 & 12.5 & 32.5 & 2.5 & 23.0 \\
+   &                     & 2460 & 47.5 & 45.0 & 10.0 & 45.0 & 5.0 & \textbf{30.5} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\caption{MetaAgent-X distillation study (Llama-3.1-8B student; same protocol as
+Table~\ref{tab:main_results}: single greedy pass@1, MAS designer--executor closed loop,
+8192-token response cap). \textbf{(a)} Teacher checkpoint, student base, and all
+SFT-distilled students with full-suite numbers; $(\uparrow\downarrow)$ deltas are vs.\ the
+student base (LLM-only Llama-3.1-8B). Students are trained on correct-only teacher
+trajectories (59{,}078 samples); the teacher's own base (Qwen3-8B) is not a student and its
+row carries no delta. \textbf{(b)} Full LoRA sweep used for model selection, evaluated on a
+fixed 200-problem dev subset (seed-2026 sample of 40 problems from each of the 5
+MAS-signal benchmarks); \emph{step} is the training step of the evaluated checkpoint
+(1200 $\approx$ 1 epoch; 2460 / 3690 = final). Dev noise is $\approx\pm$2--3\,pp macro,
+so the top configurations (C2, C4, C5 finals) are statistically tied; C5 (final) was
+selected for full-suite evaluation in (a). All SFT-only students remain below both the
+teacher and the student base on the full-suite average---motivating the RL stage.}
+\label{tab:distill_sft}
 \end{table}
 
 \subsection{Ablation Study}
