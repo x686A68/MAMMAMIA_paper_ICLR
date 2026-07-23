@@ -401,14 +401,18 @@ SAS
  & Puppeteer (Qwen3.5-4B, shared)~\citep{dang2026multi} & 96.0\,\deltaup{4.0} & 60.0\,\deltaup{3.3} & 33.3\,\deltatie{0.0} & 36.6\,\deltaup{4.0} & 36.0\,\deltadn{1.3} & 17.0\,\deltadn{3.0} & 71.3\,\deltaup{2.0} & 40.7\,\deltaup{4.7} & 63.6\,\deltadn{10.6} & 6.8\,\deltatie{0.0} \\
  & Puppeteer (Qwen3.5-9B, shared)~\citep{dang2026multi} & 98.0\,\deltatie{0.0} & 73.3\,\deltaup{10.0} & 56.7\,\deltaup{3.4} & 41.1\,\deltaup{1.7} & 42.0\,\deltadn{6.7} & 20.6\,\deltadn{5.5} & 70.7\,\deltaup{0.7} & 52.0\,\deltaup{6.0} & 60.6\,\deltadn{6.1} & 13.6\,\deltaup{2.2} \\
 \midrule
-\multirow{3}{*}{\shortstack{MAS\\(End-to-End RL)}}
+\multirow{5}{*}{\shortstack{MAS\\(End-to-End RL)}}
+ & Distill-SFT full (Llama-3.1-8B) & 48.0\,\deltadn{7.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 6.9\,\deltadn{9.1} & 4.0\,\deltadn{4.7} & 2.4\,\deltadn{0.6} & 59.3\,\deltadn{4.7} & 36.7\,\deltaup{9.4} & 16.7\,\deltadn{7.5} & 4.5\,\deltaup{2.2} \\
+ & Distill-SFT LoRA-r128 (Llama-3.1-8B) & 47.0\,\deltadn{8.0} & 0.0\,\deltadn{10.0} & 0.0\,\deltatie{0.0} & 2.9\,\deltadn{13.1} & 2.7\,\deltadn{6.0} & 0.0\,\deltadn{3.0} & 49.3\,\deltadn{14.7} & 35.3\,\deltaup{8.0} & 13.6\,\deltadn{10.6} & 2.3\,\deltatie{0.0} \\
  & SFT+GRPO & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
  & MetaAgent-X~\citep{zhang2026metaagentx} & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
  & \textbf{ARMOR (Ours)} & -- & -- & -- & -- & -- & -- & -- & -- & -- & -- \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\caption{Main results (\%). \emph{Math}, \emph{Science}, and \emph{GAIA} report accuracy; \emph{Code} reports pass@1; \emph{Multi-hop QA} reports exact match. All numbers use single-sample greedy decoding (no agentic scaffold). LCB: LiveCodeBench-v6; CC: CodeContests. Multi-hop QA uses the open-book distractor setting (no retrieval / no tools). GAIA uses a closed-book, text-only subset (no tools / web access). \emph{LLM-only (M)}: model $M$ evaluated zero-shot.}
+\caption{Main results (\%). \emph{Math}, \emph{Science}, and \emph{GAIA} report accuracy; \emph{Code} reports pass@1; \emph{Multi-hop QA} reports exact match. All numbers use single-sample greedy decoding (no agentic scaffold). LCB: LiveCodeBench-v6; CC: CodeContests. Multi-hop QA uses the open-book distractor setting (no retrieval / no tools). GAIA uses a closed-book, text-only subset (no tools / web access). \emph{LLM-only (M)}: model $M$ evaluated zero-shot. \emph{Distill-SFT}: student SFT-distilled
+from MetaAgent-X teacher trajectories (correct-only, MAS protocol; full-parameter vs.\ LoRA
+$r{=}128$), evaluated in the same designer--executor closed loop; GRPO stage pending.}
 \label{tab:main_results}
 \end{table}
 
